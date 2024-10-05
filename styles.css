@@ -10,10 +10,10 @@ html {
 }
 
 body {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Inter', sans-serif;
     line-height: 1.6;
     color: #333;
-    background-color: #f0f2f5;
+    background-color: #f5f5f5;
     transition: background-color 0.3s, color 0.3s;
 }
 
@@ -24,69 +24,9 @@ body {
     padding: 20px 0;
 }
 
-/* Theme Toggle */
-.theme-toggle {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    background-color: #333;
-    color: #fff;
-    padding: 10px;
-    border-radius: 50%;
-    cursor: pointer;
-    z-index: 1001;
-    transition: background-color 0.3s;
-}
-
-.theme-toggle:hover {
-    background-color: #555;
-}
-
-.theme-toggle i {
-    font-size: 1.2em;
-}
-
-/* Dark Mode Styles */
-body.dark-mode {
-    background-color: #121212;
-    color: #e0e0e0;
-}
-
-body.dark-mode header {
-    background-color: #1f1f1f;
-}
-
-body.dark-mode .hero {
-    background: linear-gradient(135deg, #1f4037, #99f2c8);
-}
-
-body.dark-mode .section {
-    background-color: #1e1e1e;
-}
-
-body.dark-mode .timeline-item {
-    background-color: #2c2c2c;
-}
-
-body.dark-mode .project-card {
-    background-color: #2c2c2c;
-}
-
-body.dark-mode .achievements-list li {
-    background-color: #2c2c2c;
-}
-
-body.dark-mode .contact-form form {
-    background-color: #2c2c2c;
-}
-
-body.dark-mode footer {
-    background-color: #1f1f1f;
-}
-
 /* Header */
 header {
-    background-color: #2c3e50;
+    background-color: #1a1a1a;
     color: #fff;
     padding: 20px 0;
     position: fixed;
@@ -106,7 +46,6 @@ header .container {
     font-size: 1.8em;
     font-weight: 600;
     letter-spacing: 1px;
-    color: #ff9800;
 }
 
 nav {
@@ -130,7 +69,7 @@ nav {
 }
 
 .nav-links li a:hover {
-    color: #ff9800;
+    color: #ff6f61;
 }
 
 .hamburger {
@@ -142,27 +81,24 @@ nav {
 
 /* Hero Section */
 .hero {
-    background: linear-gradient(135deg, #ff7e5f, #feb47b);
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: #fff;
     padding: 150px 0 100px 0;
     text-align: center;
-    position: relative;
     margin-top: 80px;
     border-bottom-left-radius: 50% 20%;
     border-bottom-right-radius: 50% 20%;
-    transition: background 0.3s;
 }
 
 .hero-content h2 {
     font-size: 3em;
     margin-bottom: 10px;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    letter-spacing: 2px;
 }
 
 .hero-content p {
     font-size: 1.2em;
     margin-bottom: 30px;
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
 }
 
 .social-links a {
@@ -174,43 +110,42 @@ nav {
 }
 
 .social-links a:hover {
-    color: #ff9800;
+    color: #ff6f61;
     transform: scale(1.2);
 }
 
 /* Sections */
 .section {
     padding: 60px 0;
-    background-color: #fff;
-    transition: background-color 0.3s;
+    background-color: #f5f5f5;
 }
 
 .section.education-section {
-    background-color: #f9f9f9;
+    background-color: #fff;
 }
 
 .section.experience-section {
-    background-color: #fff;
+    background-color: #f5f5f5;
 }
 
 .section.research-section {
-    background-color: #f9f9f9;
+    background-color: #fff;
 }
 
 .section.projects-section {
-    background-color: #fff;
+    background-color: #f5f5f5;
 }
 
 .section.skills-section {
-    background-color: #f9f9f9;
-}
-
-.section.achievements-section {
     background-color: #fff;
 }
 
+.section.achievements-section {
+    background-color: #f5f5f5;
+}
+
 .section.contact-section {
-    background-color: #f9f9f9;
+    background-color: #fff;
 }
 
 .section h2 {
@@ -225,12 +160,13 @@ nav {
     content: '';
     width: 60px;
     height: 4px;
-    background-color: #ff9800;
+    background-color: #ff6f61;
     display: block;
     margin: 10px auto 0;
     border-radius: 2px;
 }
 
+/* Timeline */
 .timeline {
     position: relative;
     padding: 20px 0;
@@ -243,7 +179,7 @@ nav {
     top: 0;
     bottom: 0;
     width: 4px;
-    background-color: #ff9800;
+    background-color: #ff6f61;
     transform: translateX(-50%);
 }
 
@@ -266,7 +202,7 @@ nav {
     position: absolute;
     top: 20px;
     right: -30px;
-    background-color: #ff9800;
+    background-color: #ff6f61;
     color: #fff;
     width: 60px;
     height: 60px;
@@ -289,12 +225,11 @@ nav {
     border-radius: 8px;
     position: relative;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    transition: transform 0.3s, background-color 0.3s;
+    transition: transform 0.3s;
 }
 
 .timeline-content:hover {
     transform: translateY(-10px);
-    background-color: #f0f0f0;
 }
 
 .timeline-content h3 {
@@ -375,7 +310,7 @@ nav {
 }
 
 .project-card h3 a:hover {
-    color: #ff9800;
+    color: #ff6f61;
 }
 
 .project-card p {
@@ -394,7 +329,6 @@ nav {
     background-color: #f4f4f4;
     padding: 20px;
     border-radius: 8px;
-    text-align: center;
     transition: background-color 0.3s, transform 0.3s;
 }
 
@@ -406,36 +340,32 @@ nav {
 .skill-category h3 {
     margin-bottom: 15px;
     color: #333;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
+    text-align: center;
 }
 
-.progress-bar {
+.skill {
     margin-bottom: 10px;
-    text-align: left;
 }
 
-.progress-bar span {
+.skill span {
     display: block;
-    margin-bottom: 5px;
     font-weight: 500;
-    color: #555;
+    margin-bottom: 5px;
 }
 
-.progress {
+.skill-bar {
     background-color: #ddd;
     border-radius: 20px;
     overflow: hidden;
-    height: 10px;
+    height: 20px;
 }
 
-.progress-inner {
+.skill-percentage {
+    background-color: #ff6f61;
     height: 100%;
-    background-color: #ff9800;
+    width: 0;
     border-radius: 20px;
-    transition: width 0.5s ease-in-out;
+    transition: width 1s ease-in-out;
 }
 
 /* Achievements Section */
@@ -467,7 +397,7 @@ nav {
 }
 
 .achievements-list li a:hover {
-    color: #ff9800;
+    color: #ff6f61;
 }
 
 /* Contact Section */
@@ -484,10 +414,6 @@ nav {
     transition: background-color 0.3s;
 }
 
-body.dark-mode .contact-form form {
-    background-color: #2c2c2c;
-}
-
 .form-group {
     margin-bottom: 20px;
 }
@@ -496,10 +422,6 @@ body.dark-mode .contact-form form {
     display: block;
     margin-bottom: 8px;
     color: #333;
-}
-
-body.dark-mode .form-group label {
-    color: #e0e0e0;
 }
 
 .form-group input, 
@@ -513,12 +435,12 @@ body.dark-mode .form-group label {
 
 .form-group input:focus,
 .form-group textarea:focus {
-    border-color: #ff9800;
+    border-color: #ff6f61;
     outline: none;
 }
 
 .contact-form button {
-    background-color: #ff9800;
+    background-color: #ff6f61;
     color: #fff;
     padding: 12px 20px;
     border: none;
@@ -529,21 +451,17 @@ body.dark-mode .form-group label {
 }
 
 .contact-form button:hover {
-    background-color: #e68900;
+    background-color: #e85c54;
     transform: scale(1.05);
 }
 
 /* Footer */
 footer {
-    background-color: #2c3e50;
+    background-color: #1a1a1a;
     color: #fff;
     text-align: center;
     padding: 20px 0;
     transition: background-color 0.3s;
-}
-
-body.dark-mode footer {
-    background-color: #1f1f1f;
 }
 
 /* Responsive Styles */
@@ -553,7 +471,7 @@ body.dark-mode footer {
         position: absolute;
         top: 60px;
         right: 0;
-        background-color: #2c3e50;
+        background-color: #1a1a1a;
         width: 200px;
         display: none;
         border-radius: 0 0 8px 8px;
@@ -592,30 +510,10 @@ body.dark-mode footer {
         right: auto;
     }
 
-    .timeline-item:nth-child(even) .timeline-content {
-        margin-left: 0;
-    }
-
     .projects-grid {
         grid-template-columns: 1fr;
     }
-
-    .skills-grid {
-        grid-template-columns: 1fr;
-    }
 }
 
-/* Additional Enhancements */
-
-/* Smooth Hover Transitions for Timeline Icons */
-.timeline-icon:hover {
-    background-color: #e68900;
-    transform: scale(1.1);
-}
-
-/* Skill Category Icons */
-.skill-category h3 i {
-    color: #ff9800;
-}
 
 

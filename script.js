@@ -6,7 +6,7 @@ hamburger.addEventListener('click', () => {
     navMenu.classList.toggle('active');
 });
 
-// Smooth Scrolling (Already handled by CSS 'scroll-behavior: smooth;')
+// Smooth Scrolling (Handled by CSS 'scroll-behavior: smooth;')
 // Additional Smooth Scrolling for older browsers
 const links = document.querySelectorAll('a[href^="#"]');
 
@@ -32,18 +32,28 @@ AOS.init({
     once: true
 });
 
-// Toggle Dark Mode
-const themeToggle = document.querySelector('.theme-toggle');
-const body = document.body;
+// Animate Skill Bars on Scroll
+window.addEventListener('scroll', () => {
+    const skills = document.querySelectorAll('.skill-percentage');
+    const windowHeight = window.innerHeight;
+    const triggerPoint = 150;
 
-themeToggle.addEventListener('click', () => {
-    body.classList.toggle('dark-mode');
-    themeToggle.classList.toggle('active');
-    if(body.classList.contains('dark-mode')){
-        themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
-    } else {
-        themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
-    }
+    skills.forEach(skill => {
+        const skillTop = skill.getBoundingClientRect().top;
+
+        if(skillTop < windowHeight - triggerPoint){
+            if(!skill.classList.contains('active')){
+                skill.classList.add('active');
+                // Animate the width
+                const width = skill.style.width;
+                skill.style.width = '0';
+                setTimeout(() => {
+                    skill.style.width = width;
+                }, 100);
+            }
+        }
+    });
 });
+
 
 
