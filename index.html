@@ -1,513 +1,359 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sakeeb Hasan - AI Engineer Portfolio</title>
-    
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sakeeb Hasan — Colorful Portfolio</title>
+
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Google Fonts: Inter & Fira Code -->
+
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
-    
-    <!-- Font Awesome for Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    
-    <!-- Three.js for 3D Graphics -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
 
-    <!-- AOS (Animate on Scroll) Library -->
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+    <!-- Three.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <!-- AOS -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <style>
-        /* Custom Styles for a modern, AI-focused feel */
-        :root {
-            --bg-dark: #0A0A10;
-            --primary-blue: #58a6ff;
-            --accent-magenta: #C039A7;
-            --text-light: #c9d1d9;
-            --border-color: rgba(48, 54, 61, 0.7);
+        :root{
+            --bg-1: #05060a;
+            --bg-2: #0b1020;
+            --glass: rgba(255,255,255,0.04);
+            --neon: #7dd3fc; /* cyan */
+            --accent: linear-gradient(90deg,#7dd3fc,#c084fc,#fb7185);
+            --soft: rgba(255,255,255,0.03);
         }
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg-dark);
-            color: var(--text-light);
-            overflow-x: hidden;
-        }
-        .font-fira {
-            font-family: 'Fira Code', monospace;
-        }
-        .glass-effect {
-            background: rgba(22, 27, 34, 0.5);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid var(--border-color);
-            transition: all 0.3s ease;
-        }
-        .accent-blue { color: var(--primary-blue); }
-        .accent-magenta { color: var(--accent-magenta); }
-        
-        .hover-accent:hover {
-            color: var(--primary-blue);
-            transition: color 0.3s ease;
-        }
-        .section-title {
-            font-size: 2.8rem;
-            font-weight: 700;
-            margin-bottom: 2.5rem;
-            position: relative;
-            display: inline-block;
-            color: #fff;
-        }
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary-blue), var(--accent-magenta));
-            border-radius: 2px;
-        }
-        .timeline {
-            position: relative;
-            padding-left: 3rem;
-        }
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 10px;
-            top: 10px;
-            bottom: 10px;
-            width: 2px;
-            background: linear-gradient(to bottom, var(--primary-blue), var(--accent-magenta));
-        }
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -2.5rem;
-            top: 0.75rem;
-            width: 20px;
-            height: 20px;
-            background-color: var(--primary-blue);
-            border-radius: 50%;
-            border: 4px solid var(--bg-dark);
-            z-index: 1;
-            transition: background-color 0.3s ease;
-        }
-        .timeline-item[data-aos="fade-up"].aos-animate::before {
-            animation: pulse-blue 2s infinite;
-        }
-        @keyframes pulse-blue {
-            0% { box-shadow: 0 0 0 0 rgba(88, 166, 255, 0.7); }
-            70% { box-shadow: 0 0 0 10px rgba(88, 166, 255, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(88, 166, 255, 0); }
-        }
-        .skill-tag {
-            background-color: #161b22;
-            border: 1px solid var(--border-color);
-            transition: all 0.3s ease;
-        }
-        .skill-tag:hover {
-            transform: translateY(-4px);
-            border-color: var(--primary-blue);
-            box-shadow: 0 5px 20px rgba(88, 166, 255, 0.2);
-        }
-        html { scroll-behavior: smooth; }
-        .nav-link {
-            position: relative;
-            transition: color 0.3s ease;
-        }
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -5px;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: var(--primary-blue);
-            transition: width 0.3s ease;
-        }
-        .nav-link:hover::after, .nav-link.active::after { width: 100%; }
-        
-        /* Interactive Card Glow Effect */
-        .interactive-card {
-            position: relative;
-        }
-        .interactive-card:hover {
-            border-color: var(--primary-blue);
-        }
-        .interactive-card:before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            border-radius: 8px; 
-            padding: 1px; 
-            background: linear-gradient(45deg, var(--primary-blue), var(--accent-magenta)); 
-            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            -webkit-mask-composite: xor;
-            mask-composite: exclude;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        .interactive-card:hover:before {
-            opacity: 1;
+        html,body{height:100%;}
+        body{
+            margin:0;
+            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Fira Code', sans-serif;
+            background: radial-gradient(1200px 600px at 10% 10%, rgba(124,58,237,0.09), transparent),
+                        radial-gradient(1000px 500px at 90% 90%, rgba(14,165,233,0.06), transparent),
+                        linear-gradient(180deg,var(--bg-1),var(--bg-2));
+            color:#e6eef8;
+            -webkit-font-smoothing:antialiased;
+            -moz-osx-font-smoothing:grayscale;
+            overflow-x:hidden;
         }
 
-        /* 3D Canvas Styles */
-        #hero-section { position: relative; overflow: hidden; }
-        #bg-canvas {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-            cursor: pointer;
+        /* Header */
+        header{backdrop-filter: blur(8px); background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); border-bottom:1px solid rgba(255,255,255,0.03)}
+        .logo{font-weight:800; letter-spacing:0.4px}
+
+        /* Hero */
+        #hero-section{position:relative; height:92vh; display:flex; align-items:center; justify-content:center;}
+        #bg-canvas{position:absolute; inset:0; width:100%; height:100%; z-index:0}
+        .hero-content{position:relative; z-index:3; text-align:center; padding:2rem}
+        .name{font-size: clamp(2.2rem, 5vw, 4.2rem); font-weight:800; background:var(--accent); -webkit-background-clip:text; background-clip:text; color:transparent;}
+        .subtitle{font-size:1.125rem; margin-top:0.5rem; color:rgba(255,255,255,0.9)}
+        .hero-card{margin:auto; max-width:980px; background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); border-radius:16px; padding:2rem; box-shadow: 0 10px 40px rgba(2,6,23,0.6); border:1px solid rgba(255,255,255,0.03)}
+
+        /* neon buttons */
+        .btn-neon{display:inline-flex; gap:.75rem; align-items:center; padding:.6rem 1rem; border-radius:999px; border:1px solid rgba(255,255,255,0.06); background:linear-gradient(90deg, rgba(255,255,255,0.02), transparent); transition:transform .15s ease, box-shadow .15s ease}
+        .btn-neon:hover{transform:translateY(-4px); box-shadow:0 12px 40px rgba(124,58,237,0.14), 0 6px 18px rgba(59,130,246,0.08)}
+        .btn-primary{background:linear-gradient(90deg,#7dd3fc, #c084fc); color:#021124; font-weight:700; padding:.6rem 1.1rem}
+
+        /* Floating social */
+        .social-floating{position:fixed; right:1.25rem; bottom:1.25rem; z-index:60; display:flex; flex-direction:column; gap:.6rem}
+        .social-floating a{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); padding:.6rem; border-radius:12px; display:inline-flex; align-items:center; justify-content:center; width:44px; height:44px; border:1px solid rgba(255,255,255,0.03)}
+
+        /* Section title */
+        .section-title{font-size:1.8rem; font-weight:800; background:linear-gradient(90deg,#7dd3fc,#c084fc,#fb7185); -webkit-background-clip:text; color:transparent}
+
+        /* Cards and tags */
+        .glass-effect{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); border:1px solid rgba(255,255,255,0.03); padding:1rem; border-radius:12px}
+        .skill-tag{padding:.45rem .7rem; border-radius:999px; font-weight:600; box-shadow: 0 6px 20px rgba(2,6,23,0.6); border:1px solid rgba(255,255,255,0.02)}
+
+        /* gradient underline */
+        .underline-grad{display:inline-block; position:relative}
+        .underline-grad:after{content:''; position:absolute; left:0; right:0; bottom:-6px; height:4px; border-radius:2px; background:linear-gradient(90deg,#7dd3fc,#c084fc,#fb7185); opacity:.9}
+
+        footer{padding:2rem 0; opacity:.9}
+
+        /* custom cursor */
+        .custom-cursor{width:22px;height:22px;border-radius:50%;position:fixed;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);border:2px solid rgba(255,255,255,0.06); backdrop-filter: blur(4px)}
+
+        /* small responsiveness */
+        @media (max-width:768px){
+            .hero-card{padding:1.25rem}
+            .hero-grid{grid-template-columns:1fr}
         }
-        .hero-content { position: relative; z-index: 1; }
     </style>
 </head>
 <body class="antialiased">
 
+    <div class="custom-cursor" id="customCursor"></div>
+
     <!-- Header -->
-    <header id="header" class="glass-effect fixed top-0 left-0 right-0 z-50">
+    <header id="header" class="fixed top-4 left-4 right-4 z-50">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#" class="text-2xl font-bold text-white">Sakeeb Hasan</a>
-            <div class="hidden md:flex items-center space-x-8">
-                <a href="#experience" class="nav-link text-gray-300 hover-accent">Experience</a>
-                <a href="#projects" class="nav-link text-gray-300 hover-accent">Projects</a>
-                <a href="#skills" class="nav-link text-gray-300 hover-accent">Skills</a>
-                <a href="#education" class="nav-link text-gray-300 hover-accent">Education</a>
+            <a href="#" class="logo text-white text-xl">Sakeeb Hasan</a>
+            <div class="hidden md:flex items-center gap-6">
+                <a href="#experience" class="text-gray-300 hover:text-white">Experience</a>
+                <a href="#projects" class="text-gray-300 hover:text-white">Projects</a>
+                <a href="#skills" class="text-gray-300 hover:text-white">Skills</a>
+                <a href="#education" class="text-gray-300 hover:text-white">Education</a>
             </div>
-             <button id="mobile-menu-button" class="md:hidden text-white focus:outline-none">
-                <i class="fas fa-bars text-2xl"></i>
-            </button>
+            <div class="flex items-center gap-3">
+                <a href="mailto:skk197064@gmail.com" class="btn-neon btn-primary hidden md:inline-flex">Contact</a>
+                <button id="mobile-menu-button" class="md:hidden text-white focus:outline-none">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
         </nav>
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden">
-            <a href="#experience" class="block py-2 px-4 text-sm text-gray-300 hover:bg-gray-700">Experience</a>
-            <a href="#projects" class="block py-2 px-4 text-sm text-gray-300 hover:bg-gray-700">Projects</a>
-            <a href="#skills" class="block py-2 px-4 text-sm text-gray-300 hover:bg-gray-700">Skills</a>
-            <a href="#education" class="block py-2 px-4 text-sm text-gray-300 hover:bg-gray-700">Education</a>
-        </div>
     </header>
 
     <main class="container mx-auto px-6">
-
-        <!-- Hero Section with 3D Background -->
-        <section id="hero-section" class="h-screen flex items-center justify-center text-center -mx-6">
+        <!-- Hero -->
+        <section id="hero-section" class="relative mt-10 md:mt-20 rounded-2xl overflow-hidden">
             <canvas id="bg-canvas"></canvas>
-            <div class="hero-content" data-aos="fade-in" data-aos-delay="500">
-                <h1 class="text-4xl md:text-6xl font-bold text-white leading-tight">Sakeeb Hasan</h1>
-                <h2 class="text-2xl md:text-3xl accent-blue font-semibold mt-2">AI Engineer & Machine Learning Developer</h2>
-                <p class="mt-6 text-lg text-gray-300 max-w-3xl mx-auto">
-                    Passionate about building intelligent systems that solve real-world problems. Specializing in Deep Learning, NLP, and Computer Vision.
-                </p>
-                <div class="mt-8 flex justify-center space-x-5 text-2xl text-gray-400">
-                    <a href="tel:+919354977943" class="hover-accent" title="Phone"><i class="fas fa-phone-alt"></i></a>
-                    <a href="mailto:skk197064@gmail.com" class="hover-accent" title="Email"><i class="fas fa-envelope"></i></a>
-                    <a href="https://www.linkedin.com/in/sakeeb-hasan/" target="_blank" class="hover-accent" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                    <a href="https://github.com/Sakeebhasan123456/" target="_blank" class="hover-accent" title="GitHub"><i class="fab fa-github"></i></a>
-                    <a href="https://leetcode.com/u/Sakeeb_hasan/" target="_blank" class="hover-accent" title="LeetCode"><i class="fas fa-code"></i></a>
-                    <a href="https://www.geeksforgeeks.org/user/sakeeb/" target="_blank" class="hover-accent" title="GFG"><i class="fas fa-poll"></i></a>
+
+            <div class="hero-content relative z-20 flex items-center justify-center h-full">
+                <div class="hero-card w-full glass-effect shadow-lg">
+                    <div class="grid md:grid-cols-2 gap-6 items-center">
+                        <div>
+                            <h1 class="name">Sakeeb Hasan</h1>
+                            <p class="subtitle">AI Engineer • Deep Learning • Computer Vision • NLP</p>
+
+                            <p class="mt-4 text-gray-300">I build scalable AI systems & delightful ML products — focusing on high-quality audio, vision models and production-ready pipelines.</p>
+
+                            <div class="mt-6 flex flex-wrap gap-3">
+                                <a href="#projects" class="btn-neon">
+                                    <span class="font-semibold">View Projects</span>
+                                    <i class="fas fa-arrow-right ml-1"></i>
+                                </a>
+                                <a href="https://github.com/Sakeebhasan123456" target="_blank" class="btn-neon">
+                                    <i class="fab fa-github"></i><span class="ml-2 font-semibold">GitHub</span>
+                                </a>
+                            </div>
+
+                            <div class="mt-6 flex gap-2 items-center">
+                                <div class="skill-tag bg-gradient-to-r from-cyan-600 to-purple-600 text-white">Deep Learning</div>
+                                <div class="skill-tag bg-gradient-to-r from-pink-500 to-orange-400 text-white">RAG</div>
+                                <div class="skill-tag bg-gradient-to-r from-emerald-400 to-cyan-400 text-white">Whisper</div>
+                            </div>
+                        </div>
+                        <div class="hidden md:block">
+                            <div class="glass-effect p-4 rounded-xl">
+                                <h4 class="text-sm text-gray-300">Featured — AI Interview Assessment</h4>
+                                <p class="mt-2 text-gray-200 text-sm">5.2% WER • 92% emotion recognition • RAG + FAISS + Mistral-7B</p>
+
+                                <div class="mt-4">
+                                    <a href="https://github.com/Sakeebhasan123456/AI-Automated-Audio-Interview-Assessment-System" target="_blank" class="text-sm font-semibold underline decoration-from-font">Open on GitHub</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
+
         </section>
 
-        <!-- Experience Section -->
-        <section id="experience" class="py-20">
-            <h2 class="section-title" data-aos="fade-right">Experience</h2>
-            <div class="timeline mt-12 space-y-16">
-                <!-- Mercer -->
-                <div class="timeline-item relative" data-aos="fade-up">
-                    <h3 class="text-xl font-bold text-white">AI Intern <span class="accent-blue">@ Mercer</span></h3>
-                    <p class="text-gray-400 text-sm font-fira">Jan 2025 – Jun 2025 | Gurgaon, India</p>
-                    <ul class="mt-4 list-disc list-inside text-gray-300 space-y-2">
-                        <li>Orchestrated <strong class="text-white">OpenAI Whisper-large-v3</strong> integration to transcribe multilingual audio with <strong class="text-white">&lt;5% WER</strong>.</li>
-                        <li>Deployed <strong class="text-white">MonkeyOCR</strong> on OpenCV frames to detect visual anomalies, slashing false flags by <strong class="text-white">30%</strong>.</li>
-                        <li>Accelerated inference time by <strong class="text-white">25%</strong> through multimodal feature fusion using TensorFlow and GPU quantization.</li>
+        <!-- Experience -->
+        <section id="experience" class="py-16">
+            <h2 class="section-title">Experience</h2>
+            <div class="mt-8 grid md:grid-cols-2 gap-6">
+                <div class="glass-effect rounded-xl p-6" data-aos="fade-up">
+                    <h3 class="font-bold text-lg">AI Intern <span class="text-cyan-300">@ Mercer</span></h3>
+                    <p class="text-sm text-gray-300">Jan 2025 — Jun 2025 • Gurgaon</p>
+                    <ul class="mt-4 list-disc list-inside text-gray-300 space-y-1">
+                        <li>Integrated Whisper-large-v3 — <strong class="text-white">&lt;5% WER</strong></li>
+                        <li>Deployed MonkeyOCR on OpenCV — reduced false flags by <strong>30%</strong></li>
+                        <li>GPU quantization & multimodal fusion — inference speed +25%</li>
                     </ul>
                 </div>
-                <!-- GSOC -->
-                <div class="timeline-item relative" data-aos="fade-up" data-aos-delay="100">
-                    <h3 class="text-xl font-bold text-white">Machine Learning Apprentice <span class="accent-blue">@ GSOC</span></h3>
-                    <p class="text-gray-400 text-sm font-fira">Sep 2024 – Dec 2024 | Remote</p>
-                     <ul class="mt-4 list-disc list-inside text-gray-300 space-y-2">
-                        <li>Architected end-to-end ML pipelines with custom feature transforms, boosting model accuracy by <strong class="text-white">3.5%</strong>.</li>
-                        <li>Spearheaded contributions to open-source projects including:
-                            <ul class="list-['-_'] list-inside ml-4 mt-2 space-y-1">
-                                <li><strong class="text-white">Explainable AI:</strong> Eliminated model bias by <strong class="text-white">4%</strong>. <a href="https://github.com/Sakeebhasan123456/explainableai" target="_blank" class="accent-blue hover:underline text-sm ml-2"><i class="fas fa-link"></i></a></li>
-                                <li><strong class="text-white">ISRO Mining Site App:</strong> Delivered <strong class="text-white">95% accuracy</strong> in mineral classification. <a href="https://github.com/Devanik21/ISRO_Mining_Site_FINAL_APP" target="_blank" class="accent-blue hover:underline text-sm ml-2"><i class="fas fa-link"></i></a></li>
-                                <li><strong class="text-white">KabaddiPy Analytics:</strong> Forecasted match outcomes with <strong class="text-white">88% accuracy</strong>. <a href="https://github.com/Sakeebhasan123456/kabaddiPy/tree/main/analytics" target="_blank" class="accent-blue hover:underline text-sm ml-2"><i class="fas fa-link"></i></a></li>
-                            </ul>
-                        </li>
+                <div class="glass-effect rounded-xl p-6" data-aos="fade-up" data-aos-delay="80">
+                    <h3 class="font-bold text-lg">Machine Learning Apprentice <span class="text-pink-300">@ GSOC</span></h3>
+                    <p class="text-sm text-gray-300">Sep 2024 — Dec 2024 • Remote</p>
+                    <ul class="mt-4 list-disc list-inside text-gray-300 space-y-1">
+                        <li>End-to-end ML pipelines — accuracy +3.5%</li>
+                        <li>Open-source contributions: Explainable AI, ISRO Mining App, KabaddiPy</li>
                     </ul>
                 </div>
-                <!-- Add other experiences with data-aos attributes -->
             </div>
         </section>
 
-        <!-- Projects Section -->
-        <section id="projects" class="py-20">
-            <h2 class="section-title" data-aos="fade-right">Featured Projects</h2>
-            <div class="grid md:grid-cols-2 gap-8 mt-12">
-                <!-- Project 1 -->
-                <div class="glass-effect interactive-card rounded-lg p-6 flex flex-col" data-aos="fade-up">
-                    <h3 class="text-xl font-bold text-white">AI-Automated Audio Interview Assessment System</h3>
-                    <p class="text-gray-400 mt-2 flex-grow">Achieved a <strong class="text-white">5.2% WER</strong> and <strong class="text-white">92% emotion recognition accuracy</strong>. Architected a RAG-based assessment framework with FAISS and Mistral-7B.</p>
+        <!-- Projects -->
+        <section id="projects" class="py-16">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="mt-8 grid md:grid-cols-2 gap-6">
+                <div class="glass-effect rounded-xl p-6" data-aos="fade-up">
+                    <h3 class="font-bold text-lg underline-grad">AI-Automated Audio Interview Assessment System</h3>
+                    <p class="mt-3 text-gray-300">WER 5.2% • 92% emotion recognition • First-Speaker Lock algorithm • RAG + FAISS</p>
                     <div class="mt-4">
-                        <a href="https://github.com/Sakeebhasan123456/AI-Automated-Audio-Interview-Assessment-System" target="_blank" class="accent-blue font-semibold hover:underline">View on GitHub <i class="fab fa-github ml-1"></i></a>
+                        <a class="btn-neon" href="https://github.com/Sakeebhasan123456/AI-Automated-Audio-Interview-Assessment-System" target="_blank">View on GitHub</a>
                     </div>
                 </div>
-                <!-- Project 2 -->
-                <div class="glass-effect interactive-card rounded-lg p-6 flex flex-col" data-aos="fade-up" data-aos-delay="100">
-                    <h3 class="text-xl font-bold text-white">Data Augmentation using DDSP</h3>
-                    <p class="text-gray-400 mt-2 flex-grow">Masterminded 2 SOTA models (DDSP & FastDiff) for high-fidelity bird song synthesis, attaining a <strong class="text-white">9.1/10 quality score</strong> and streamlining inference by <strong class="text-white">95%</strong>.</p>
+                <div class="glass-effect rounded-xl p-6" data-aos="fade-up" data-aos-delay="100">
+                    <h3 class="font-bold text-lg underline-grad">Data Augmentation using DDSP</h3>
+                    <p class="mt-3 text-gray-300">DDSP + FastDiff • High-fidelity bird song synthesis • Inference steps optimized</p>
                     <div class="mt-4">
-                        <a href="https://github.com/Sakeebhasan123456/Data-Augumentation-using-Digital-Diffrential-signal-processing" target="_blank" class="accent-blue font-semibold hover:underline">View on GitHub <i class="fab fa-github ml-1"></i></a>
+                        <a class="btn-neon" href="https://github.com/Sakeebhasan123456/Data-Augumentation-using-Digital-Diffrential-signal-processing" target="_blank">View on GitHub</a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Skills Section -->
-        <section id="skills" class="py-20">
-            <h2 class="section-title" data-aos="fade-right">Technical Skills</h2>
-            <div class="mt-12">
-                <div class="mb-8" data-aos="fade-up">
-                    <h3 class="text-lg font-semibold text-white mb-4">Languages & Frameworks</h3>
-                    <div class="flex flex-wrap gap-3">
-                        <span class="skill-tag font-fira text-sm py-2 px-4 rounded-lg">Python</span>
-                        <span class="skill-tag font-fira text-sm py-2 px-4 rounded-lg">SQL</span>
-                        <span class="skill-tag font-fira text-sm py-2 px-4 rounded-lg">C++</span>
-                        <span class="skill-tag font-fira text-sm py-2 px-4 rounded-lg">JavaScript</span>
-                        <span class="skill-tag font-fira text-sm py-2 px-4 rounded-lg">Go</span>
-                        <span class="skill-tag font-fira text-sm py-2 px-4 rounded-lg">TensorFlow</span>
-                        <span class="skill-tag font-fira text-sm py-2 px-4 rounded-lg">PyTorch</span>
-                        <span class="skill-tag font-fira text-sm py-2 px-4 rounded-lg">Scikit-learn</span>
-                        <span class="skill-tag font-fira text-sm py-2 px-4 rounded-lg">Keras</span>
+        <!-- Skills -->
+        <section id="skills" class="py-16">
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="mt-6 grid md:grid-cols-3 gap-4">
+                <div class="glass-effect p-4 rounded-xl">
+                    <h4 class="font-semibold">Languages & Frameworks</h4>
+                    <div class="mt-3 flex flex-wrap gap-2">
+                        <span class="skill-tag bg-gradient-to-r from-sky-500 to-indigo-500">Python</span>
+                        <span class="skill-tag bg-gradient-to-r from-emerald-400 to-cyan-400">TensorFlow</span>
+                        <span class="skill-tag bg-gradient-to-r from-rose-500 to-yellow-400">PyTorch</span>
+                        <span class="skill-tag bg-gradient-to-r from-violet-400 to-pink-400">JavaScript</span>
                     </div>
                 </div>
-                <div class="mb-8" data-aos="fade-up" data-aos-delay="100">
-                    <h3 class="text-lg font-semibold text-white mb-4">AI Technologies</h3>
-                    <div class="flex flex-wrap gap-3">
-                        <span class="skill-tag font-fira text-sm py-2 px-4 rounded-lg">NLP</span>
-                        <span class="skill-tag font-fira text-sm py-2 px-4 rounded-lg">RAG</span>
-                        <span class="skill-tag font-fira text-sm py-2 px-4 rounded-lg">Mistral-7B</span>
-                        <span class="skill-tag font-fira text-sm py-2 px-4 rounded-lg">Computer Vision</span>
-                        <span class="skill-tag font-fira text-sm py-2 px-4 rounded-lg">OpenCV</span>
-                        <span class="skill-tag font-fira text-sm py-2 px-4 rounded-lg">Whisper ASR</span>
-                        <span class="skill-tag font-fira text-sm py-2 px-4 rounded-lg">DDSP</span>
-                        <span class="skill-tag font-fira text-sm py-2 px-4 rounded-lg">FastDiff</span>
-                        <span class="skill-tag font-fira text-sm py-2 px-4 rounded-lg">PyAnnote</span>
-                        <span class="skill-tag font-fira text-sm py-2 px-4 rounded-lg">SenseVoice</span>
+                <div class="glass-effect p-4 rounded-xl">
+                    <h4 class="font-semibold">AI Technologies</h4>
+                    <div class="mt-3 flex flex-wrap gap-2">
+                        <span class="skill-tag bg-gradient-to-r from-cyan-400 to-blue-500">NLP</span>
+                        <span class="skill-tag bg-gradient-to-r from-pink-500 to-indigo-500">RAG</span>
+                        <span class="skill-tag bg-gradient-to-r from-rose-400 to-red-500">Whisper</span>
+                        <span class="skill-tag bg-gradient-to-r from-amber-400 to-yellow-400">DDSP</span>
                     </div>
                 </div>
-                <div data-aos="fade-up" data-aos-delay="200">
-                    <h3 class="text-lg font-semibold text-white mb-4">Data Tools</h3>
-                    <div class="flex flex-wrap gap-3">
-                        <span class="skill-tag font-fira text-sm py-2 px-4 rounded-lg">Pandas</span>
-                        <span class="skill-tag font-fira text-sm py-2 px-4 rounded-lg">NumPy</span>
-                        <span class="skill-tag font-fira text-sm py-2 px-4 rounded-lg">Plotly</span>
-                        <span class="skill-tag font-fira text-sm py-2 px-4 rounded-lg">FAISS</span>
-                        <span class="skill-tag font-fira text-sm py-2 px-4 rounded-lg">D3.js</span>
-                        <span class="skill-tag font-fira text-sm py-2 px-4 rounded-lg">Flask</span>
+                <div class="glass-effect p-4 rounded-xl">
+                    <h4 class="font-semibold">Data Tools</h4>
+                    <div class="mt-3 flex flex-wrap gap-2">
+                        <span class="skill-tag bg-gradient-to-r from-emerald-400 to-lime-400">Pandas</span>
+                        <span class="skill-tag bg-gradient-to-r from-sky-400 to-cyan-400">FAISS</span>
+                        <span class="skill-tag bg-gradient-to-r from-purple-400 to-pink-400">Plotly</span>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Education Section -->
-        <section id="education" class="py-20">
-            <h2 class="section-title" data-aos="fade-right">Education</h2>
-            <div class="mt-12 glass-effect interactive-card rounded-lg p-8" data-aos="zoom-in">
-                <h3 class="text-xl font-bold text-white">Netaji Subhash University of Technology</h3>
-                <p class="accent-blue">Bachelor of Technology in Information Technology</p>
-                <p class="text-gray-400 text-sm font-fira mt-1">May 2021 – May 2025 | New Delhi, India</p>
-                <p class="mt-4 text-gray-300">CGPA: <strong class="text-white">6.86/10</strong></p>
-                <p class="mt-2 text-gray-300">Relevant Coursework: <strong class="text-white">Machine Learning, Data Science, and Algorithms.</strong></p>
+        <!-- Education -->
+        <section id="education" class="py-16">
+            <h2 class="section-title">Education</h2>
+            <div class="mt-6 glass-effect rounded-xl p-6">
+                <h3 class="font-bold">Netaji Subhash University of Technology</h3>
+                <p class="text-sm text-gray-300">B.Tech in Information Technology • May 2021 — May 2025</p>
+                <p class="mt-2">CGPA: <strong class="text-white">6.86/10</strong></p>
             </div>
         </section>
 
     </main>
 
-    <!-- Footer -->
-    <footer class="border-t border-gray-800 mt-20">
-        <div class="container mx-auto px-6 py-6 text-center text-gray-500">
-            <p>&copy; 2024 Sakeeb Hasan. Designed with <i class="fas fa-heart text-red-500"></i>, built with <i class="fab fa-python text-yellow-400"></i> & <i class="fab fa-js-square text-blue-400"></i>.</p>
+    <footer class="text-center text-gray-400">
+        <div class="container mx-auto px-6">
+            <p>&copy; 2024 Sakeeb Hasan. Built with passion & code.</p>
         </div>
     </footer>
 
-    <!-- AOS (Animate on Scroll) JS -->
+    <!-- Floating social -->
+    <div class="social-floating">
+        <a href="https://linkedin.com/in/sakeeb-hasan/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin text-lg text-white"></i></a>
+        <a href="https://github.com/Sakeebhasan123456" target="_blank" title="GitHub"><i class="fab fa-github text-lg text-white"></i></a>
+    </div>
+
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-
     <script>
-        // --- Initialize AOS ---
-        AOS.init({
-            duration: 800,
-            once: true,
-            offset: 50,
+        AOS.init({duration:800, once:true, offset:60});
+
+        // Cursor
+        const cursor = document.getElementById('customCursor');
+        document.addEventListener('mousemove', e => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+        });
+        document.querySelectorAll('a, button, .btn-neon').forEach(el => {
+            el.addEventListener('mouseenter', () => { cursor.style.transform = 'translate(-50%,-50%) scale(1.6)'; cursor.style.borderColor = 'rgba(125,211,252,0.9)'});
+            el.addEventListener('mouseleave', () => { cursor.style.transform = 'translate(-50%,-50%) scale(1)'; cursor.style.borderColor = 'rgba(255,255,255,0.06)'});
         });
 
-        // --- Mobile Menu Toggle ---
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
+        // Mobile menu
+        const mobileMenuBtn = document.getElementById('mobile-menu-button');
+        mobileMenuBtn && mobileMenuBtn.addEventListener('click', ()=> alert('Open the nav on mobile — small demo.'));
 
-        mobileMenuButton.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-
-        document.querySelectorAll('#mobile-menu a, .nav-link').forEach(link => {
-            link.addEventListener('click', () => {
-                if (!mobileMenu.classList.contains('hidden')) {
-                    mobileMenu.classList.add('hidden');
-                }
-            });
-        });
-
-        // --- Active Nav Link Styling on Scroll ---
-        const sections = document.querySelectorAll('section[id]');
-        const navLinks = document.querySelectorAll('header nav a.nav-link');
-
-        window.addEventListener('scroll', () => {
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                if (pageYOffset >= sectionTop - 150) {
-                    current = section.getAttribute('id');
-                }
-            });
-
-            navLinks.forEach(link => {
-                link.classList.remove('active', 'accent-blue');
-                if (link.getAttribute('href').includes(current)) {
-                    link.classList.add('active', 'accent-blue');
-                }
-            });
-        });
-
-        // --- Three.js 3D Background Animation ---
-        // This script remains the same as the previous version
+        // --- THREE.JS Background (colorful particles + rotating shape) ---
         const canvas = document.getElementById('bg-canvas');
         const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-        const renderer = new THREE.WebGLRenderer({
-            canvas: canvas,
-            alpha: true
-        });
-
+        const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
         renderer.setSize(window.innerWidth, window.innerHeight);
         renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
-        const geometry = new THREE.IcosahedronGeometry(1, 1);
-        const material = new THREE.MeshStandardMaterial({
-            color: 0x58a6ff,
-            metalness: 0.6,
-            roughness: 0.4,
-            wireframe: true,
-        });
+        // lights
+        const hemi = new THREE.HemisphereLight(0xfffff0, 0x080820, 0.6);
+        scene.add(hemi);
+        const p1 = new THREE.PointLight(0x7dd3fc, 0.9, 15);
+        p1.position.set(4,4,4);
+        scene.add(p1);
+        const p2 = new THREE.PointLight(0xff6b6b, 0.6, 15);
+        p2.position.set(-4,-2,2);
+        scene.add(p2);
+
+        // shape
+        const geometry = new THREE.TorusKnotGeometry(0.9, 0.28, 160, 20);
+        const material = new THREE.MeshStandardMaterial({ color:0x8b5cf6, emissive:0x2a1a3a, metalness:0.7, roughness:0.2 });
         const shape = new THREE.Mesh(geometry, material);
         scene.add(shape);
 
-        const particlesCount = 5000;
+        // colorful particles
+        const particlesCount = 3000;
         const posArray = new Float32Array(particlesCount * 3);
-        const velArray = new Float32Array(particlesCount * 3);
-        const originalPosArray = new Float32Array(particlesCount * 3);
-
-        for(let i = 0; i < particlesCount * 3; i++) {
-            posArray[i] = (Math.random() - 0.5) * 15;
-            velArray[i] = 0;
+        const colorArray = new Float32Array(particlesCount * 3);
+        for(let i=0;i<particlesCount;i++){
+            const i3 = i*3;
+            posArray[i3] = (Math.random()-0.5)*18;
+            posArray[i3+1] = (Math.random()-0.5)*8;
+            posArray[i3+2] = (Math.random()-0.5)*18;
+            // HSL rainbow by index
+            const hue = i / particlesCount; // 0..1
+            const col = new THREE.Color(); col.setHSL(hue, 0.65, 0.55);
+            colorArray[i3] = col.r; colorArray[i3+1] = col.g; colorArray[i3+2] = col.b;
         }
-        originalPosArray.set(posArray);
+        const particlesGeo = new THREE.BufferGeometry();
+        particlesGeo.setAttribute('position', new THREE.BufferAttribute(posArray,3));
+        particlesGeo.setAttribute('color', new THREE.BufferAttribute(colorArray,3));
+        const particlesMat = new THREE.PointsMaterial({ size:0.03, vertexColors:true, depthWrite:false });
+        const particles = new THREE.Points(particlesGeo, particlesMat);
+        scene.add(particles);
 
-        const particlesGeometry = new THREE.BufferGeometry();
-        particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
-        
-        const particlesMaterial = new THREE.PointsMaterial({
-            size: 0.008,
-            color: 0xffffff
-        });
-        const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
-        scene.add(particlesMesh);
-
-        const ambientLight = new THREE.AmbientLight(0xffffff, 0.1);
-        scene.add(ambientLight);
-        const pointLight = new THREE.PointLight(0xffffff, 1.5);
-        pointLight.position.set(2, 3, 4);
-        scene.add(pointLight);
-        
-        camera.position.z = 5;
-
-        const mouse = new THREE.Vector2();
-        const interactionPlane = new THREE.Plane(new THREE.Vector3(0, 0, 1), 0);
-        const mousePosition3D = new THREE.Vector3();
-        const raycaster = new THREE.Raycaster();
-
-        function updateMousePosition(event) {
-            const rect = canvas.getBoundingClientRect();
-            const x = event.touches ? event.touches[0].clientX : event.clientX;
-            const y = event.touches ? event.touches[0].clientY : event.clientY;
-            mouse.x = ((x - rect.left) / rect.width) * 2 - 1;
-            mouse.y = -((y - rect.top) / rect.height) * 2 + 1;
-        }
-        document.addEventListener('mousemove', updateMousePosition);
-        document.addEventListener('touchmove', updateMousePosition);
+        camera.position.z = 6;
 
         const clock = new THREE.Clock();
-        const animate = () => {
-            const elapsedTime = clock.getElapsedTime();
-            shape.rotation.y = .3 * elapsedTime;
-            shape.rotation.x = .2 * elapsedTime;
-            raycaster.setFromCamera(mouse, camera);
-            raycaster.ray.intersectPlane(interactionPlane, mousePosition3D);
-            for (let i = 0; i < particlesCount; i++) {
-                const i3 = i * 3;
-                const p = new THREE.Vector3(posArray[i3], posArray[i3+1], posArray[i3+2]);
-                const v = new THREE.Vector3(velArray[i3], velArray[i3+1], velArray[i3+2]);
-                const o = new THREE.Vector3(originalPosArray[i3], originalPosArray[i3+1], originalPosArray[i3+2]);
-                const distToMouse = p.distanceTo(mousePosition3D);
-                const forceToMouse = new THREE.Vector3();
-                const interactionRadius = 2.0;
-                const maxForce = 0.015;
-                if (distToMouse < interactionRadius) {
-                    const forceMagnitude = maxForce * (1 - distToMouse / interactionRadius);
-                    forceToMouse.subVectors(mousePosition3D, p).normalize().multiplyScalar(forceMagnitude);
-                    v.add(forceToMouse);
-                }
-                const returnForce = new THREE.Vector3();
-                const returnStrength = 0.0005;
-                returnForce.subVectors(o, p).multiplyScalar(returnStrength);
-                v.add(returnForce);
-                v.multiplyScalar(0.96);
-                p.add(v);
-                posArray[i3] = p.x;
-                posArray[i3+1] = p.y;
-                posArray[i3+2] = p.z;
-                velArray[i3] = v.x;
-                velArray[i3+1] = v.y;
-                velArray[i3+2] = v.z;
+        function animate(){
+            const t = clock.getElapsedTime();
+            shape.rotation.y = t*0.25;
+            shape.rotation.x = Math.sin(t*0.15)*0.12;
+
+            // gently move particles in a wave
+            const positions = particles.geometry.attributes.position.array;
+            for(let i=0;i<particlesCount;i++){
+                const idx = i*3;
+                positions[idx+1] += Math.sin(t*0.6 + i) * 0.0006; // subtle drift
             }
-            particlesMesh.geometry.attributes.position.needsUpdate = true;
+            particles.geometry.attributes.position.needsUpdate = true;
+
+            // color shift the main shape slowly
+            const hue = (Math.sin(t*0.12)*0.5 + 0.5) * 0.7; // 0..0.7
+            material.color.setHSL(hue, 0.6, 0.55);
+
             renderer.render(scene, camera);
-            window.requestAnimationFrame(animate);
-        };
+            requestAnimationFrame(animate);
+        }
         animate();
 
-        window.addEventListener('resize', () => {
+        // handle resize
+        window.addEventListener('resize', ()=>{
             camera.aspect = window.innerWidth / window.innerHeight;
             camera.updateProjectionMatrix();
             renderer.setSize(window.innerWidth, window.innerHeight);
-            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
         });
+
     </script>
 </body>
 </html>
-
-
-
-
