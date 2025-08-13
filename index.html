@@ -1,4 +1,5 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,21 +14,20 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
     
     <!-- Font Awesome for Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></link>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <!-- Three.js for 3D Graphics -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    
+
     <!-- AOS (Animate on Scroll) Library -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    
+
     <style>
+        /* Custom Styles for a modern, AI-focused feel */
         :root {
             --bg-dark: #0A0A10;
             --primary-blue: #58a6ff;
             --accent-magenta: #C039A7;
-            --accent-green: #00FFAA;
-            --accent-orange: #FF6B35;
             --text-light: #c9d1d9;
             --border-color: rgba(48, 54, 61, 0.7);
         }
@@ -50,8 +50,6 @@
         }
         .accent-blue { color: var(--primary-blue); }
         .accent-magenta { color: var(--accent-magenta); }
-        .accent-green { color: var(--accent-green); }
-        .accent-orange { color: var(--accent-orange); }
         
         .hover-accent:hover {
             color: var(--primary-blue);
@@ -160,6 +158,7 @@
         .interactive-card:hover:before {
             opacity: 1;
         }
+
         /* 3D Canvas Styles */
         #hero-section { position: relative; overflow: hidden; }
         #bg-canvas {
@@ -171,6 +170,7 @@
             z-index: 0;
         }
         .hero-content { position: relative; z-index: 1; }
+
         /* Custom Cursor */
         .custom-cursor {
             width: 30px;
@@ -202,6 +202,7 @@
             from { background-position: 0 0; }
             to { background-position: 0 100%; }
         }
+
         /* Glitch Effect */
         .glitch {
             animation: glitch 1.5s linear infinite;
@@ -241,43 +242,13 @@
             4%,60%{ transform: translate(-3px,0); }
             62%{ transform: translate(-12px,0) skew(10deg); }
         }
-        
-        /* Gradient Text Effect */
-        .gradient-text {
-            background: linear-gradient(90deg, var(--primary-blue), var(--accent-magenta), var(--accent-green));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            animation: gradient-shift 3s ease-in-out infinite alternate;
-        }
-        @keyframes gradient-shift {
-            0% { filter: hue-rotate(0deg); }
-            100% { filter: hue-rotate(360deg); }
-        }
-        
-        /* Floating Animation */
-        .floating {
-            animation: floating 3s ease-in-out infinite;
-        }
-        @keyframes floating {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
-        }
-        
-        /* Pulse Animation */
-        .pulse {
-            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-        }
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: .5; }
-        }
     </style>
 </head>
-<body>
+<body class="antialiased">
+
     <div class="custom-cursor"></div>
     <div class="scanline-overlay"></div>
+
     <!-- Header -->
     <header id="header" class="glass-effect fixed top-0 left-0 right-0 z-50">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
@@ -300,7 +271,9 @@
             <a href="#education" class="block py-2 px-4 text-sm text-gray-300 hover:bg-gray-700">Education</a>
         </div>
     </header>
+
     <main class="container mx-auto px-6">
+
         <!-- Hero Section with 3D Background -->
         <section id="hero-section" class="h-screen flex items-center justify-center text-center -mx-6">
             <canvas id="bg-canvas"></canvas>
@@ -320,6 +293,7 @@
                 </div>
             </div>
         </section>
+
         <!-- Experience Section -->
         <section id="experience" class="py-20">
             <h2 class="section-title" data-aos="fade-right">Experience</h2>
@@ -352,6 +326,7 @@
                 <!-- Add other experiences with data-aos attributes -->
             </div>
         </section>
+
         <!-- Projects Section -->
         <section id="projects" class="py-20">
             <h2 class="section-title" data-aos="fade-right">Featured Projects</h2>
@@ -372,7 +347,7 @@
                 </div>
                 <!-- Project 2 -->
                 <div class="glass-effect interactive-card rounded-lg p-6 flex flex-col" data-aos="fade-up" data-aos-delay="100">
-                    <h3 class="text-xl font-bold text-white">Data Augumentation using DDSP</h3>
+                    <h3 class="text-xl font-bold text-white">Data Augmentation using DDSP</h3>
                     <div class="mt-2 flex-grow">
                         <ul class="list-disc list-inside text-gray-300 space-y-2">
                              <li>Masterminded <strong class="text-white">2 state-of-the-art</strong> deep learning models (DDSP & FastDiff) for high-fidelity bird song synthesis, attaining a <strong class="text-white">9.1/10 quality score</strong>.</li>
@@ -386,6 +361,7 @@
                 </div>
             </div>
         </section>
+
         <!-- Skills Section -->
         <section id="skills" class="py-20">
             <h2 class="section-title" data-aos="fade-right">Technical Skills</h2>
@@ -415,7 +391,7 @@
                         <span class="skill-tag font-fira text-sm py-2 px-4 rounded-lg">Whisper ASR</span>
                         <span class="skill-tag font-fira text-sm py-2 px-4 rounded-lg">DDSP</span>
                         <span class="skill-tag font-fira text-sm py-2 px-4 rounded-lg">FastDiff</span>
-                        <span class="skill-tag font-fira text-sm py-2 px-4rounded-lg">PyAnnote</span>
+                        <span class="skill-tag font-fira text-sm py-2 px-4 rounded-lg">PyAnnote</span>
                         <span class="skill-tag font-fira text-sm py-2 px-4 rounded-lg">SenseVoice</span>
                     </div>
                 </div>
@@ -432,6 +408,7 @@
                 </div>
             </div>
         </section>
+
         <!-- Education Section -->
         <section id="education" class="py-20">
             <h2 class="section-title" data-aos="fade-right">Education</h2>
@@ -443,15 +420,19 @@
                 <p class="mt-2 text-gray-300">Relevant Coursework: <strong class="text-white">Machine Learning, Data Science, and Algorithms.</strong></p>
             </div>
         </section>
+
     </main>
+
     <!-- Footer -->
     <footer class="border-t border-gray-800 mt-20">
         <div class="container mx-auto px-6 py-6 text-center text-gray-500">
             <p>&copy; 2024 Sakeeb Hasan. Designed with <i class="fas fa-heart text-red-500"></i>, built with <i class="fab fa-python text-yellow-400"></i> & <i class="fab fa-js-square text-blue-400"></i>.</p>
         </div>
     </footer>
+
     <!-- AOS (Animate on Scroll) JS -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
     <script>
         // --- Initialize AOS ---
         AOS.init({
@@ -459,6 +440,7 @@
             once: true,
             offset: 50,
         });
+
         // --- Custom Cursor ---
         const cursor = document.querySelector('.custom-cursor');
         window.addEventListener('mousemove', e => {
@@ -469,6 +451,7 @@
             el.addEventListener('mouseenter', () => cursor.style.transform = 'scale(1.5)');
             el.addEventListener('mouseleave', () => cursor.style.transform = 'scale(1)');
         });
+
         // --- Mobile Menu Toggle ---
         const mobileMenuButton = document.getElementById('mobile-menu-button');
         const mobileMenu = document.getElementById('mobile-menu');
@@ -476,6 +459,7 @@
         document.querySelectorAll('#mobile-menu a, .nav-link').forEach(link => {
             link.addEventListener('click', () => !mobileMenu.classList.contains('hidden') && mobileMenu.classList.add('hidden'));
         });
+
         // --- Active Nav Link Styling on Scroll ---
         const sections = document.querySelectorAll('section[id]');
         const navLinks = document.querySelectorAll('header nav a.nav-link');
@@ -493,6 +477,7 @@
                 }
             });
         });
+
         // --- Three.js 3D Background Animation ---
         const canvas = document.getElementById('bg-canvas');
         const scene = new THREE.Scene();
@@ -500,41 +485,46 @@
         const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true });
         renderer.setSize(window.innerWidth, window.innerHeight);
         renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-        
-        // Create particles
-        const particleCount = 7000;
-        const posArray = new Float32Array(particleCount * 3);
-        const velArray = new Float32Array(particleCount * 3);
-        const originalPosArray = new Float32Array(particleCount * 3);
-        
-        for(let i = 0; i < particleCount * 3; i++) {
+
+        const geometry = new THREE.TorusKnotGeometry(0.8, 0.25, 100, 16);
+        const material = new THREE.MeshStandardMaterial({
+            color: 0x58a6ff,
+            metalness: 0.7,
+            roughness: 0.3,
+            wireframe: true,
+        });
+        const shape = new THREE.Mesh(geometry, material);
+        scene.add(shape);
+
+        const particlesCount = 7000;
+        const posArray = new Float32Array(particlesCount * 3);
+        const velArray = new Float32Array(particlesCount * 3);
+        const originalPosArray = new Float32Array(particlesCount * 3);
+        for(let i = 0; i < particlesCount * 3; i++) {
             posArray[i] = (Math.random() - 0.5) * 20;
             velArray[i] = 0;
         }
-        
         originalPosArray.set(posArray);
-        
+
         const particlesGeometry = new THREE.BufferGeometry();
         particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
-        
         const particlesMaterial = new THREE.PointsMaterial({ size: 0.007, color: 0xffffff });
         const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
         scene.add(particlesMesh);
-        
+
         const ambientLight = new THREE.AmbientLight(0xffffff, 0.1);
         scene.add(ambientLight);
-        
         const pointLight = new THREE.PointLight(0xffffff, 1.5);
         pointLight.position.set(2, 3, 4);
         scene.add(pointLight);
         
         camera.position.z = 5;
-        
+
         const mouse = new THREE.Vector2();
         const interactionPlane = new THREE.Plane(new THREE.Vector3(0, 0, 1), 0);
         const mousePosition3D = new THREE.Vector3();
         const raycaster = new THREE.Raycaster();
-        
+
         function updateMousePosition(event) {
             const rect = canvas.getBoundingClientRect();
             const x = event.touches ? event.touches[0].clientX : event.clientX;
@@ -542,43 +532,36 @@
             mouse.x = ((x - rect.left) / rect.width) * 2 - 1;
             mouse.y = -((y - rect.top) / rect.height) * 2 + 1;
         }
-        
         document.addEventListener('mousemove', updateMousePosition);
         document.addEventListener('touchmove', updateMousePosition);
-        
+
         const clock = new THREE.Clock();
         const animate = () => {
             const elapsedTime = clock.getElapsedTime();
             shape.rotation.y = .3 * elapsedTime;
             shape.rotation.x = .2 * elapsedTime;
-            
             raycaster.setFromCamera(mouse, camera);
             raycaster.ray.intersectPlane(interactionPlane, mousePosition3D);
-            
-            for (let i = 0; i < particleCount; i++) {
+            for (let i = 0; i < particlesCount; i++) {
                 const i3 = i * 3;
                 const p = new THREE.Vector3(posArray[i3], posArray[i3+1], posArray[i3+2]);
                 const v = new THREE.Vector3(velArray[i3], velArray[i3+1], velArray[i3+2]);
                 const o = new THREE.Vector3(originalPosArray[i3], originalPosArray[i3+1], originalPosArray[i3+2]);
-                
                 const distToMouse = p.distanceTo(mousePosition3D);
                 const forceToMouse = new THREE.Vector3();
                 const interactionRadius = 2.0;
                 const maxForce = 0.015;
-                
                 if (distToMouse < interactionRadius) {
                     const forceMagnitude = maxForce * (1 - distToMouse / interactionRadius);
                     forceToMouse.subVectors(mousePosition3D, p).normalize().multiplyScalar(forceMagnitude);
                     v.add(forceToMouse);
                 }
-                
                 const returnForce = new THREE.Vector3();
                 const returnStrength = 0.0005;
                 returnForce.subVectors(o, p).multiplyScalar(returnStrength);
                 v.add(returnForce);
                 v.multiplyScalar(0.96);
                 p.add(v);
-                
                 posArray[i3] = p.x;
                 posArray[i3+1] = p.y;
                 posArray[i3+2] = p.z;
@@ -586,14 +569,12 @@
                 velArray[i3+1] = v.y;
                 velArray[i3+2] = v.z;
             }
-            
             particlesMesh.geometry.attributes.position.needsUpdate = true;
             renderer.render(scene, camera);
             window.requestAnimationFrame(animate);
         };
-        
         animate();
-        
+
         window.addEventListener('resize', () => {
             camera.aspect = window.innerWidth / window.innerHeight;
             camera.updateProjectionMatrix();
@@ -603,4 +584,5 @@
     </script>
 </body>
 </html>
+
 
